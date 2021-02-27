@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,23 +9,26 @@ public class Platform : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Opponent.onCollisionEntered += OnCollisionEntered;
+        PlayerController.onPlayerCollisionEntered += OnPlayerCollisionEntered;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnPlayerCollisionEntered(GameObject gameObj, Collision collision)
     {
-        
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.transform.tag == "Player")
+        if (collision.gameObject==gameObject)
         {
+            gameObj.transform.parent.parent = null;
             GameManager.Instance.playerState = GameManager.playerStates.onGround;
-            collision.gameObject.GetComponent<Animator>().SetBool("fall", false);
-            var vector = collision.transform.rotation.eulerAngles;
-            vector.x = transform.rotation.eulerAngles.z;
-            collision.gameObject.transform.rotation = Quaternion.Euler(vector);
+            gameObj.GetComponent<Animator>().SetBool("fall", false);
         }
     }
+
+    private void OnCollisionEntered(GameObject gameObj, Collision collision)
+    {
+        if (collision.gameObject==gameObject)
+        {
+            gameObj.transform.parent = null;
+        }
+    }
+
 }

@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static Action<GameObject, Collision> onPlayerCollisionEntered;
+
     public Vector3 mouseStartPosition;
     public float rotationSpeed;
     public float movementSpeed;
@@ -31,27 +33,18 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag=="finish")
+        if (onPlayerCollisionEntered != null)
+        {
+            onPlayerCollisionEntered(gameObject, collision);
+        }
+        if (collision.transform.tag == "finish")
         {
             gameObject.GetComponent<Animator>().SetBool("run", false);
             GameManager.Instance.gameState = GameManager.gameStates.paint;
         }
-        else if (collision.transform.tag == "HorizontalObstacle")
+        if (collision.transform.tag == "sea")
         {
-            gameObject.GetComponent<Animator>().SetBool("fall", true);
-            gameObject.GetComponent<Animator>().SetBool("run", false);
-        }
-        else if (collision.transform.tag == "platform")
-        {
-            transform.parent.parent = null;
-        }
-        else if (collision.transform.tag == "rotatingPlatform")
-        {
-            transform.parent.parent = collision.gameObject.transform;
-        }
-        else if (collision.transform.tag == "rotatingStick")
-        {
-
+            gameObject.transform.position = Vector3.zero;
         }
     }
 
@@ -78,10 +71,10 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             mouseStartPosition = Input.mousePosition;
-            gameObject.GetComponent<Animator>().SetBool("run", true);
         }
         if (Input.GetMouseButton(0))
         {
+            gameObject.GetComponent<Animator>().SetBool("run", true);
             transform.position += transform.forward * movementSpeed;
             var direction = Input.mousePosition - mouseStartPosition;
             if (mouseStartPosition != Input.mousePosition)

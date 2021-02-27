@@ -1,14 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Opponent : MonoBehaviour
 {
+    public static Action<GameObject, Collision> onCollisionEntered;
+
     public Transform destination;
     NavMeshAgent agent;
     Vector3 startPos;
-    // Start is called before the first frame update
     void Start()
     {
         startPos = transform.position;
@@ -16,11 +18,9 @@ public class Opponent : MonoBehaviour
         agent.destination = destination.transform.position ;
     }
 
-    // Update is called once per frame
     void Update()
     {
         agent.updateRotation = false;
-
         GetComponent<Animator>().SetFloat("speed", agent.desiredVelocity.magnitude);
     }
 
@@ -31,25 +31,17 @@ public class Opponent : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag == "HorizontalObstacle")
+        if (onCollisionEntered != null)
         {
-            gameObject.GetComponent<NavMeshAgent>().isStopped = true;
-            gameObject.GetComponent<Animator>().SetBool("fall", true);  
-            Instantiate(gameObject, startPos, Quaternion.identity,transform.parent);
-        }
-        else if (collision.transform.tag == "rotatingPlatform")
-        {
-            transform.parent = collision.gameObject.transform;
-
-        }
-        else if (collision.transform.tag == "platform")
-        {
-            transform.parent = null;
+            onCollisionEntered(gameObject, collision);
         }
     }
 
     public void DestroyOpponent()
     {
-            Destroy(gameObject);
+        transform.position = startPos;
+        gameObject.GetComponent<Animator>().SetBool("fall", false);
+        gameObject.GetComponent<NavMeshAgent>().isStopped = false;
+
     }
 }

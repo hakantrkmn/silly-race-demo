@@ -12,6 +12,7 @@ TagManager:
   - rotatingStick
   - rotatingPlatform
   - HorizontalObstacle
+  - sea
   layers:
   - Default
   - TransparentFX

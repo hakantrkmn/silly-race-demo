@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    public enum gameStates { run,paint };
+    public enum gameStates { run,paint,over };
     public gameStates gameState;
     public enum playerStates { onGround, onAir };
     public playerStates playerState;
@@ -36,4 +36,5 @@ public class GameManager : MonoBehaviour
         gameState = gameStates.run;
         playerState = playerStates.onGround;
     }
+
 }
