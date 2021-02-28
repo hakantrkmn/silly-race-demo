@@ -2,11 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class RotatingStick : Obstacle
 {
 
-    // Start is called before the first frame update
     void Start()
     {
         obstaclesType = obstacles.RotatingStick;
@@ -26,6 +26,7 @@ public class RotatingStick : Obstacle
     {
         if (collision.gameObject == gameObject)
         {
+            gameObj.GetComponent<NavMeshAgent>().isStopped=true;
             ForceObject(collision, gameObj);
         }
     }

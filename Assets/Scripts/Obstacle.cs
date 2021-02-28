@@ -49,9 +49,9 @@ public class Obstacle : MonoBehaviour
     public void ForceObject(Collision collision, GameObject gameObj)
     {
         var direction = (collision.contacts[0].point - collision.gameObject.transform.position).normalized;
-        direction = direction * force;
+        direction = (direction * force).normalized;
         direction = new Vector3(direction.x * 2, forceYAxis, direction.z * 2);
-        gameObj.GetComponent<Rigidbody>().AddForce(direction);
+        gameObj.GetComponent<Rigidbody>().AddForce(direction * force,ForceMode.Impulse);
     }
 
 }

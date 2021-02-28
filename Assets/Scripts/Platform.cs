@@ -6,7 +6,6 @@ using UnityEngine;
 public class Platform : MonoBehaviour
 {
     public float lerpSpeed;
-    // Start is called before the first frame update
     void Start()
     {
         Opponent.onCollisionEntered += OnCollisionEntered;
@@ -28,6 +27,7 @@ public class Platform : MonoBehaviour
         if (collision.gameObject==gameObject)
         {
             gameObj.transform.parent = null;
+            GameManager.Instance.playerState = GameManager.playerStates.onGround;
         }
     }
 

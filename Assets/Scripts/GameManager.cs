@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,14 +28,32 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    public enum gameStates { run,paint,over };
+    public enum gameStates { run,paint,over,start };
     public gameStates gameState;
     public enum playerStates { onGround, onAir };
     public playerStates playerState;
+    public enum opponentStates { onGround, onAir };
+    public opponentStates opponentState;
     private void Start()
     {
-        gameState = gameStates.run;
+        gameState = gameStates.start;
         playerState = playerStates.onGround;
+        opponentState = opponentStates.onGround;
     }
 
+    private void Update()
+    {
+        StartGame();
+    }
+
+    private void StartGame()
+    {
+        if (gameState==gameStates.start)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                gameState = gameStates.run;
+            }
+        }
+    }
 }

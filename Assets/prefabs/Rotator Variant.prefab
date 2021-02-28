@@ -42,8 +42,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c294b5e70fbd1c498ac5af4097f71a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 100
-  forceYAxis: 30
+  obstaclesType: 0
+  leftLimit: 0
+  rightLimit: 0
+  speed: 0
+  force: 0.8
+  forceYAxis: 2
+  rotateSpeed: 0
 --- !u!64 &450454578
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -86,7 +91,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cabac201dd2260048bebb63799c2aa92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 0.5
+  obstaclesType: 0
+  leftLimit: 0
+  rightLimit: 0
+  speed: 0
+  force: 0
+  forceYAxis: 0
+  rotateSpeed: -0.2
 --- !u!1001 &4654823425606544577
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -182,17 +193,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: a761344071c497f42a0452761e48b28e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.24806206
+      value: -0.451
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a761344071c497f42a0452761e48b28e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.94035274
+      value: 0.004294496
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a761344071c497f42a0452761e48b28e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13.900847
+      value: 27.057
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a761344071c497f42a0452761e48b28e,
         type: 3}
@@ -237,7 +248,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a761344071c497f42a0452761e48b28e,
         type: 3}
       propertyPath: m_Name
-      value: Rotator Variant
+      value: Rotator Variant (2)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a761344071c497f42a0452761e48b28e,
         type: 3}

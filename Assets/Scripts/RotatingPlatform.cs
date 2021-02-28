@@ -16,6 +16,7 @@ public class RotatingPlatform : Obstacle
     {
         if (collision.gameObject==gameObject)
         {
+
             gameObj.transform.parent.parent = collision.gameObject.transform;
         }
     }
@@ -24,6 +25,7 @@ public class RotatingPlatform : Obstacle
     {
         if (collision.gameObject==gameObject)
         {
+
             gameObj.transform.parent = collision.gameObject.transform;
         }
     }
@@ -32,4 +34,9 @@ public class RotatingPlatform : Obstacle
     {
         moveObstacle();
     }
+    //private void OnCollisionStay(Collision collision)
+    //{
+    //    var direction = new Vector3(collision.contacts[0].normal.y, 1.5f, 0);
+    //    collision.gameObject.GetComponent<Rigidbody>().AddForce(direction * force, ForceMode.Impulse);
+    //}
 }

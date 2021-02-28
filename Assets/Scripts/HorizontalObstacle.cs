@@ -12,7 +12,6 @@ public class HorizontalObstacle : Obstacle
         obstaclesType = obstacles.Horizontal;
         Opponent.onCollisionEntered+= OnCollisionEntered;
         PlayerController.onPlayerCollisionEntered += OnPlayerCollisionEntered;
-
     }
 
     private void OnPlayerCollisionEntered(GameObject gameObj, Collision collision)
@@ -28,10 +27,9 @@ public class HorizontalObstacle : Obstacle
 
     private void OnCollisionEntered(GameObject gameObj, Collision collision)
     {
-        Debug.Log(collision.gameObject);
         if (collision.gameObject==gameObject)
         {
-            Debug.Log("asfa");
+            GameManager.Instance.opponentState = GameManager.opponentStates.onAir;
             gameObj.GetComponent<NavMeshAgent>().isStopped = true;
             gameObj.GetComponent<Animator>().SetBool("fall", true);
             ForceObject(collision,gameObj);

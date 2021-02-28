@@ -15,13 +15,27 @@ public class CameraController : MonoBehaviour
     {
         if (GameManager.Instance.gameState==GameManager.gameStates.run)
         {
+            if (transform.position != target.position + offset)
+            {
+                transform.position = target.position + offset;
+                transform.rotation = Quaternion.Euler(16, 0, 0);
+            }
             FollowPlayer();
         }
         else if (GameManager.Instance.gameState==GameManager.gameStates.paint)
         {
             FollowWall();
-
         }
+        else if (GameManager.Instance.gameState == GameManager.gameStates.start)
+        {
+            StartMove();
+        }
+    }
+
+    private void StartMove()
+    {
+        transform.position = Vector3.Lerp(transform.position, target.position+offset, Time.deltaTime * lerpSpeed);
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(16, 0, 0), Time.deltaTime * lerpSpeed);
     }
 
     private void FollowWall()

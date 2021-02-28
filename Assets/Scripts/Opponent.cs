@@ -11,15 +11,33 @@ public class Opponent : MonoBehaviour
     public Transform destination;
     NavMeshAgent agent;
     Vector3 startPos;
+    public GameObject parent;
+
+    public float EndDistance;
+
     void Start()
     {
-        startPos = transform.position;
+        parent = transform.parent.gameObject;
         agent = GetComponent<NavMeshAgent>();
+        if (GameManager.Instance.gameState==GameManager.gameStates.start)
+        {
+            agent.isStopped = true;
+        }
+        startPos = transform.position;
         agent.destination = destination.transform.position ;
     }
 
     void Update()
     {
+        if (transform.parent==null)
+        {
+            transform.parent = parent.transform;
+        }
+        EndDistance = (destination.transform.position - transform.position).magnitude;
+        if (GameManager.Instance.gameState == GameManager.gameStates.run && GameManager.Instance.opponentState==GameManager.opponentStates.onGround)
+        {
+            agent.isStopped = false;
+        }
         agent.updateRotation = false;
         GetComponent<Animator>().SetFloat("speed", agent.desiredVelocity.magnitude);
     }

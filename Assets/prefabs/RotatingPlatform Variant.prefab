@@ -26,7 +26,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eb49d1e2099b564ca00c8da6d2242e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 0.1
+  obstaclesType: 0
+  leftLimit: 0
+  rightLimit: 0
+  speed: 0
+  force: 3
+  forceYAxis: 0
+  rotateSpeed: 0.2
 --- !u!1001 &1912045875230847293
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47,12 +53,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 4841b0419233ec9448539fb0008e373f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.227
+      value: 0.15000004
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4841b0419233ec9448539fb0008e373f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.247
+      value: 17.05
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4841b0419233ec9448539fb0008e373f,
         type: 3}
@@ -97,12 +103,17 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4841b0419233ec9448539fb0008e373f,
         type: 3}
       propertyPath: m_Name
-      value: RotatingPlatform Variant
+      value: RotatingPlatform
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4841b0419233ec9448539fb0008e373f,
         type: 3}
       propertyPath: m_TagString
       value: rotatingPlatform
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4841b0419233ec9448539fb0008e373f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4841b0419233ec9448539fb0008e373f, type: 3}
