@@ -41,7 +41,7 @@ public class UIController : MonoBehaviour
     // eğer boyama yüzdesi değiştiyse değiştiriyoruz
     private void changePercent(float obj)
     {
-        percent.text = obj.ToString();
+        percent.text = "%"+obj.ToString();
     }
 
     //sıralama değiştiyse değiştiriyoruz

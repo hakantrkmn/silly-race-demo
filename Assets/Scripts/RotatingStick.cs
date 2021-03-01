@@ -27,7 +27,9 @@ public class RotatingStick : Obstacle
     {
         if (collision.gameObject == gameObject)
         {
-            gameObj.GetComponent<NavMeshAgent>().isStopped=true;
+            GameManager.Instance.opponentState = GameManager.opponentStates.onAir;
+            gameObj.GetComponent<NavMeshAgent>().isStopped = true;
+            gameObj.GetComponent<Animator>().SetBool("fall", true);
             ForceObject(collision, gameObj);
         }
     }
