@@ -47,7 +47,7 @@ MonoBehaviour:
   rightLimit: 0
   speed: 0
   force: 0.8
-  forceYAxis: 2
+  forceYAxis: 3
   rotateSpeed: 0
 --- !u!64 &450454578
 MeshCollider:
@@ -97,7 +97,7 @@ MonoBehaviour:
   speed: 0
   force: 0
   forceYAxis: 0
-  rotateSpeed: -0.2
+  rotateSpeed: 0.3
 --- !u!1001 &4654823425606544577
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -193,17 +193,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: a761344071c497f42a0452761e48b28e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.59
+      value: 0.319
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a761344071c497f42a0452761e48b28e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0040048175
+      value: 0.004
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a761344071c497f42a0452761e48b28e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 27.550795
+      value: 24.984
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a761344071c497f42a0452761e48b28e,
         type: 3}
@@ -248,7 +248,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a761344071c497f42a0452761e48b28e,
         type: 3}
       propertyPath: m_Name
-      value: Rotator Variant (3)
+      value: Rotator Variant (4)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a761344071c497f42a0452761e48b28e,
         type: 3}

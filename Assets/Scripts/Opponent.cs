@@ -59,6 +59,10 @@ public class Opponent : MonoBehaviour
         {
             onCollisionEntered(gameObject, collision);
         }
+        if (collision.transform.tag=="finish")
+        {
+            Destroy(gameObject);
+        }
     }
     void CalculateDistance()
     {

@@ -134,24 +134,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 380769494}
     m_Modifications:
-    - target: {fileID: -4985304099024518553, guid: 5418423b06bd8a0419e5a4c625eede33,
-        type: 3}
-      propertyPath: rotateSpeed
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 760516774, guid: 5418423b06bd8a0419e5a4c625eede33, type: 3}
-      propertyPath: forceYAxis
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 5916121092736798679, guid: 5418423b06bd8a0419e5a4c625eede33,
         type: 3}
       propertyPath: m_Name
       value: Rotator Variant (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5916121092736798679, guid: 5418423b06bd8a0419e5a4c625eede33,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6436092903901468013, guid: 5418423b06bd8a0419e5a4c625eede33,
         type: 3}
