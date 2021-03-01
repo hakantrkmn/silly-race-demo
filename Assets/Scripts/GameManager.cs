@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
         StartGame();
     }
 
+    //oyunu başlatıyoruz
     private void StartGame()
     {
         if (gameState==gameStates.start)

@@ -14,6 +14,7 @@ public class RotatingStick : Obstacle
         PlayerController.onPlayerCollisionEntered += OnPlayerCollisionEntered;
     }
 
+    //playerın harekete geçirdiği actiona göre kontrol yapıyoruz. eğer çarptığı obstacle bu nesne ise gerekli işlemleri yapıyoruz
     private void OnPlayerCollisionEntered(GameObject gameObj, Collision collision)
     {
         if (collision.gameObject==gameObject)
@@ -21,7 +22,7 @@ public class RotatingStick : Obstacle
             ForceObject(collision,gameObj);
         }
     }
-
+    //opponentin harekete geçirdiği actiona göre kontrol yapıyoruz. eğer çarptığı obstacle bu nesne ise gerekli işlemleri yapıyoruz
     private void OnCollisionEntered(GameObject gameObj, Collision collision)
     {
         if (collision.gameObject == gameObject)

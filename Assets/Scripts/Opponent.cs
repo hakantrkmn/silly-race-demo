@@ -17,6 +17,7 @@ public class Opponent : MonoBehaviour
 
     void Start()
     {
+        //ai'ın hedefini belirliyoruz. parent objesini rotating stickte değiştimiz için eski haline getirebilmek için kaydediyoruz.
         parent = transform.parent.gameObject;
         agent = GetComponent<NavMeshAgent>();
         if (GameManager.Instance.gameState==GameManager.gameStates.start)
@@ -33,19 +34,24 @@ public class Opponent : MonoBehaviour
         {
             transform.parent = parent.transform;
         }
-        EndDistance = (destination.transform.position - transform.position).magnitude;
+
+        CalculateDistance();
         if (GameManager.Instance.gameState == GameManager.gameStates.run && GameManager.Instance.opponentState==GameManager.opponentStates.onGround)
         {
             agent.isStopped = false;
         }
         agent.updateRotation = false;
+        //opponentin animasyonunu yapmak için sahip olduğu hızı animatore yolluyoruz.
         GetComponent<Animator>().SetFloat("speed", agent.desiredVelocity.magnitude);
     }
 
+    //ai'ın dönme hareketi
     private void LateUpdate()
     {
         transform.rotation = Quaternion.LookRotation(agent.velocity.normalized);
     }
+
+    //opponent herhangi bir collisiona girdiğinde actionu harekete geçiriyoruz
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -54,7 +60,12 @@ public class Opponent : MonoBehaviour
             onCollisionEntered(gameObject, collision);
         }
     }
+    void CalculateDistance()
+    {
+        EndDistance = (destination.transform.position - transform.position).magnitude;
+    }
 
+    //opponnent eğer obstacleye çarparsa animasyonda sağladığımız event sayesinde animasyonun sonunda bu fonksiyonu çağırıyor.
     public void DestroyOpponent()
     {
         transform.position = startPos;

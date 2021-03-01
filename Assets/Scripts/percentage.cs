@@ -11,11 +11,9 @@ public class percentage : MonoBehaviour
     public static Action<float> onPercentChanged;
     public float percent;
 
-
-
-
     private void Update()
     {
+        //eğer oyun paint durumunda ise ve ekrana dokunulmuş ise boyadığımız nesnenin main texturesini alıyoruz
         if (GameManager.Instance.gameState==GameManager.gameStates.paint)
         {
             if (Input.GetMouseButton(0))
@@ -25,6 +23,7 @@ public class percentage : MonoBehaviour
         }
         
     }
+    //main textureyi almamıza yarayan fonksiyon
     private void GetMainTexture(InkCanvas obj)
     {
         foreach (var item in obj.PaintDatas)
@@ -37,6 +36,8 @@ public class percentage : MonoBehaviour
         
     }
 
+    //aldığımız textureyi pixel pixel okuyarak kırmızı mı değil mi diye kontrol ediyoruz. kırmızıysa oranlayarak actionu harekete geçiyoruz
+    //eğer yüzde değişmiş ise aciton harekete geçiyor.
     void readPixels(Texture2D texture)
     {
         var redPix = 0;

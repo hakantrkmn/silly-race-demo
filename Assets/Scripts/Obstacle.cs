@@ -8,7 +8,7 @@ using UnityEngine.AI;
 
 public class Obstacle : MonoBehaviour
 {
-    public enum obstacles { Horizontal, RotatingPlatform, Rotator, RotatingStick };
+    public enum obstacles { Horizontal, RotatingPlatform, Rotator, RotatingStick,DonutStick };
     public obstacles obstaclesType;
     [Header("HorizontalObstacle Settings")]
     public float leftLimit;
@@ -20,7 +20,7 @@ public class Obstacle : MonoBehaviour
     [Header("Rotation Settings")]
     public float rotateSpeed;
 
-
+    //opponentlerin sınıfı. bu fonksiyonda her opponentin hareket fonksiyonunu yazıyoruz.ardından her alt objede objeyi belirtip move fonksiyonunu çalıştırmamız yetiyor
     public void moveObstacle()
     {
         if (obstaclesType == obstacles.Horizontal)
@@ -43,9 +43,13 @@ public class Obstacle : MonoBehaviour
         {
             transform.Rotate(new Vector3(0, 1, 0), 5 * rotateSpeed);
         }
+        else if (obstaclesType == obstacles.DonutStick)
+        {
+            transform.Rotate(new Vector3(1,0 , 0), 5 * rotateSpeed);
+        }
     }
 
-
+    //bu da eğer obstacle da force kullanacaksak bu fonksiyonu çağırıp objenin kendisini ve çarpışma collisionunu yollarsak gerçekleşiyor.
     public void ForceObject(Collision collision, GameObject gameObj)
     {
         var direction = (collision.contacts[0].point - collision.gameObject.transform.position).normalized;

@@ -31,6 +31,7 @@ public class Ranking : MonoBehaviour
     public List<GameObject> Opponents;
     public List<float> Distances;
 
+    //player ve obstacleleri level bitince atamasını yapıyoruz. bu fonksiyonla bütün playerlardan uzaklığını alıp sıralayıp asıl oyuncunun rankını geri döndürüyoruz.
     public void Rank()
     {
         foreach (var item in Opponents)

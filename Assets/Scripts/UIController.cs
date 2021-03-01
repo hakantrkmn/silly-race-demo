@@ -30,17 +30,21 @@ public class UIController : MonoBehaviour
 
     public Text rank;
     public Text percent;
+
+    //gerekli actionlara subscribe yapıyoruz. bu sayede actionlar harekete geçince gerekli işlemleri yapıyoruz
     private void Start()
     {
         PlayerController.onRankChanged += changeRankText;
         percentage.onPercentChanged += changePercent;
     }
 
+    // eğer boyama yüzdesi değiştiyse değiştiriyoruz
     private void changePercent(float obj)
     {
         percent.text = obj.ToString();
     }
 
+    //sıralama değiştiyse değiştiriyoruz
     private void changeRankText(int obj)
     {
         rank.text = obj.ToString();

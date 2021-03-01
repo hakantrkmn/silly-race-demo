@@ -22,9 +22,9 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         PreRank = 10;
-        InvokeRepeating("GetRank",0, 2);
+        InvokeRepeating("GetRank",0, 1);
     }
-
+    //sıralamayı alıp eğer öncekinden farkıysa actionu harekete geçiriyoruz.
     void GetRank()
     {
         Ranking.Instance.Rank();
@@ -36,7 +36,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        //sıralamayı hesaplayabilmek için bitişe kalan uzaklığı hesaplıyoruz
         CalculateDistance();
+        //oyun durumuna göre oyun mekaniğini değiştiriyoruz.
         if (GameManager.Instance.gameState==GameManager.gameStates.run && GameManager.Instance.playerState==GameManager.playerStates.onGround)
         {
             RunControl();
@@ -52,6 +54,7 @@ public class PlayerController : MonoBehaviour
         EndDistance = (finish.transform.position - transform.position).magnitude;
     }
 
+    //player herhangi bir collisiona girdiğinde actionu harekete geçiriyoruz
     private void OnCollisionEnter(Collision collision)
     {
         if (onPlayerCollisionEntered != null)
@@ -71,7 +74,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
+    //playerin boyama mekaniği
     private void PaintControl()
     {
         if (Input.GetMouseButton(0))
@@ -88,7 +91,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
+    //playerin swerwe mekaniği
     public void RunControl()
     {
         if (Input.GetMouseButtonDown(0))

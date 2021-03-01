@@ -32,18 +32,21 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    //kamerayı karaktere doğru hareketini sağlıyoruz
     private void StartMove()
     {
         transform.position = Vector3.Lerp(transform.position, target.position+offset, Time.deltaTime * lerpSpeed);
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(16, 0, 0), Time.deltaTime * lerpSpeed);
     }
 
+    //paint durumuna geçildiğinde kamera hareketi
     private void FollowWall()
     {
         transform.position = Vector3.Lerp(transform.position, finishPosition.position, Time.deltaTime * lerpSpeed);
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(2, -0.8f, 0), Time.deltaTime * lerpSpeed);
     }
 
+    //oyunucuyu takip etme fonksiyonu
     void FollowPlayer()
     {
         transform.position = target.position + offset;
