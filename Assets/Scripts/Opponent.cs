@@ -11,13 +11,17 @@ public class Opponent : MonoBehaviour
     public Transform destination;
     NavMeshAgent agent;
     Vector3 startPos;
-    public GameObject parent;
+    GameObject parent;
+    Rigidbody rb;
 
+
+    bool death;
     public float EndDistance;
 
     void Start()
     {
-        //ai'ın hedefini belirliyoruz. parent objesini rotating stickte değiştimiz için eski haline getirebilmek için kaydediyoruz.
+        rb = GetComponent<Rigidbody>();
+        //ai'ın hedefini belirliyoruz. parent objesini rotating platformda değiştimiz için eski haline getirebilmek için kaydediyoruz.
         parent = transform.parent.gameObject;
         agent = GetComponent<NavMeshAgent>();
         if (GameManager.Instance.gameState==GameManager.gameStates.start)
@@ -36,6 +40,7 @@ public class Opponent : MonoBehaviour
         }
 
         CalculateDistance();
+
         if (GameManager.Instance.gameState == GameManager.gameStates.run && GameManager.Instance.opponentState==GameManager.opponentStates.onGround)
         {
             agent.isStopped = false;
@@ -48,7 +53,7 @@ public class Opponent : MonoBehaviour
     //ai'ın dönme hareketi
     private void LateUpdate()
     {
-        transform.rotation = Quaternion.LookRotation(agent.velocity.normalized);
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(agent.desiredVelocity.normalized), 30 * Time.deltaTime);
     }
 
     //opponent herhangi bir collisiona girdiğinde actionu harekete geçiriyoruz
@@ -61,7 +66,11 @@ public class Opponent : MonoBehaviour
         }
         if (collision.transform.tag=="finish")
         {
-            Destroy(gameObject);
+            agent.enabled = false;
+            GetComponent<CapsuleCollider>().enabled = false;
+            rb.useGravity = false;
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
         }
     }
     void CalculateDistance()
@@ -72,9 +81,10 @@ public class Opponent : MonoBehaviour
     //opponnent eğer obstacleye çarparsa animasyonda sağladığımız event sayesinde animasyonun sonunda bu fonksiyonu çağırıyor.
     public void DestroyOpponent()
     {
-        transform.position = startPos;
-        gameObject.GetComponent<Animator>().SetBool("fall", false);
-        gameObject.GetComponent<NavMeshAgent>().isStopped = false;
+        var inGO = Instantiate(gameObject, startPos, Quaternion.identity, transform.parent);
+        Ranking.Instance.updateRank(gameObject, inGO);
+        Destroy(gameObject);
 
     }
+
 }

@@ -2,33 +2,48 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class DonutStick : Obstacle
 {
+
     void Start()
     {
+        timer = 0;
+        wait = false;
+        PointTwo = transform.localPosition;
+        pointThree = PointTwo;
         obstaclesType = obstacles.DonutStick;
-        //Opponent.onCollisionEntered += OnCollisionEntered;
         PlayerController.onPlayerCollisionEntered += OnPlayerCollisionEntered;
-        InvokeRepeating("RandomSpeed", 0, 2);
     }
 
-    //donut her 2 saniyede bir random bir dönme hızına sahip olmasını sağlanayan fonksiyon
-    void RandomSpeed()
+    //player collidera girerse yapılacaklar
+    private void OnPlayerCollisionEntered(GameObject gameObj, Collision collision)
     {
-        rotateSpeed = UnityEngine.Random.Range(0.5f, -0.5f);
+        if (collision.gameObject == gameObject)
+        {
+            GameManager.Instance.opponentState = GameManager.opponentStates.onAir;
+            gameObj.GetComponent<NavMeshAgent>().isStopped = true;
+            gameObj.GetComponent<Animator>().SetBool("fall", true);
+            ForceObject(collision, gameObj);
+        }
     }
 
-    private void OnPlayerCollisionEntered(GameObject arg1, Collision arg2)
-    {
-    }
 
-    private void OnCollisionEntered(GameObject arg1, Collision arg2)
-    {
-    }
 
     void Update()
     {
-        moveObstacle();
+        //timer tutuyoruz. timer her belirlediğimiz değere geldiğinde timer duruyor ve obstacle hareket ediyor
+        timer += Time.deltaTime;
+        if (timer>=timeInterval && wait==false)
+        {
+            moveObstacle();
+        }
+        else if (wait)
+        {
+            timer = 0;
+            wait = false;
+        }
+
     }
 }

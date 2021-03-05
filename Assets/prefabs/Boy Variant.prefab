@@ -42,14 +42,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 145aa954fdc3c9f49b7d78ae51777dca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseStartPosition: {x: 0, y: 0, z: 0}
   rotationSpeed: 350
   movementSpeed: 0.015
   brush:
-    brushTexture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
+    brushTexture: {fileID: 2800000, guid: f198c1c995ef08c478009b65a48af828, type: 3}
     brushNormalTexture: {fileID: 0}
     brushHeightTexture: {fileID: 0}
-    brushScale: 0.065
+    brushScale: 0.086
     rotateAngle: 0
     brushNormalBlend: 0
     brushHeightBlend: 0
@@ -60,7 +59,6 @@ MonoBehaviour:
   finish: {fileID: 0}
   EndDistance: 0
   line: 0
-  PreRank: 0
 --- !u!1001 &3895174919559088805
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76,17 +74,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: c18320f4b6958e849935166884e5ae20,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.599
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c18320f4b6958e849935166884e5ae20,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.053
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c18320f4b6958e849935166884e5ae20,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.589
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c18320f4b6958e849935166884e5ae20,
         type: 3}

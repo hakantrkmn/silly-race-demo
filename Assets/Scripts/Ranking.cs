@@ -28,8 +28,17 @@ public class Ranking : MonoBehaviour
     #endregion
 
     public GameObject Player;
+    public GameObject Opponent;
     public List<GameObject> Opponents;
     public List<float> Distances;
+
+    void Start()
+    {
+        for (int i = 0; i < Opponent.transform.childCount; i++)
+        {
+            Opponents.Add(Opponent.transform.GetChild(i).gameObject);
+        }
+    }
 
     //player ve obstacleleri level bitince atamasını yapıyoruz. bu fonksiyonla bütün playerlardan uzaklığını alıp sıralayıp asıl oyuncunun rankını geri döndürüyoruz.
     public void Rank()
@@ -43,6 +52,14 @@ public class Ranking : MonoBehaviour
         Distances.Sort();
         Player.GetComponent<PlayerController>().line = Distances.IndexOf(playerDist);
         Distances.Clear();
+
+    }
+
+    //opponent oyundan silindiğinde rankın güncellenmesi sağlıyoruz.
+    public void updateRank(GameObject outGO,GameObject inGO)
+    {
+        Opponents.Add(inGO);
+        Opponents.Remove(outGO);
 
     }
 }

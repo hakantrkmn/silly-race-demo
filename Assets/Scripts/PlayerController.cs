@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public static Action<GameObject, Collision> onPlayerCollisionEntered;
     public static Action<int> onRankChanged;
 
-    public Vector3 mouseStartPosition;
+    Vector3 mouseStartPosition;
     public float rotationSpeed;
     public float movementSpeed;
     public Brush brush;
@@ -17,10 +17,12 @@ public class PlayerController : MonoBehaviour
 
     public float EndDistance;
     public int line;
-    public int PreRank;
+    int PreRank;
+    Animator animator;
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         PreRank = 10;
         InvokeRepeating("GetRank",0, 1);
     }
@@ -31,6 +33,7 @@ public class PlayerController : MonoBehaviour
         if (line!=PreRank)
         {
             onRankChanged(line+1);
+            PreRank = line;
         }
     }
 
@@ -39,7 +42,7 @@ public class PlayerController : MonoBehaviour
         //sıralamayı hesaplayabilmek için bitişe kalan uzaklığı hesaplıyoruz
         CalculateDistance();
         //oyun durumuna göre oyun mekaniğini değiştiriyoruz.
-        if (GameManager.Instance.gameState==GameManager.gameStates.run && GameManager.Instance.playerState==GameManager.playerStates.onGround)
+        if (GameManager.Instance.gameState==GameManager.gameStates.run && GameManager.Instance.playerState==GameManager.playerStates.onGround && !animator.GetBool("fall"))
         {
             RunControl();
         }
@@ -63,7 +66,7 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.transform.tag == "finish")
         {
-            gameObject.GetComponent<Animator>().SetBool("run", false);
+            animator.SetBool("run", false);
             GameManager.Instance.gameState = GameManager.gameStates.paint;
         }
         if (collision.transform.tag == "sea")
@@ -86,12 +89,12 @@ public class PlayerController : MonoBehaviour
                 var paintObject = hitInfo.transform.GetComponent<InkCanvas>();
                 if (paintObject != null)
                 {
-                    paintObject.Paint(brush, hitInfo);
+                    paintObject.Paint(brush, hitInfo);                    
                 }
             }
         }
     }
-    //playerin swerwe mekaniği
+    //playerin swerve mekaniği
     public void RunControl()
     {
         if (Input.GetMouseButtonDown(0))
@@ -111,7 +114,17 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0))
         {
-            gameObject.GetComponent<Animator>().SetBool("run", false);
+            animator.SetBool("run", false);
         }
+    }
+
+    //animasyona eklediğimiz event sayesinde fonksiyonu çalıştırıyoruz.
+    public void restartPlayer()
+    {
+        animator.SetBool("fallEnd", true);
+        GameManager.Instance.playerState = GameManager.playerStates.onGround;
+        animator.SetBool("fall", false);
+        transform.position = Vector3.zero;
+
     }
 }

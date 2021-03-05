@@ -14,6 +14,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -8836696378809578477, guid: 86007bc1e2f2dfa45bc2216b091ae362, type: 3}
+--- !u!208 &-1663195377352166583
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4602032218424742042}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.075, y: 0.16700001, z: 0.075}
+  m_MoveThreshold: 0.0001
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.001
 --- !u!114 &7239434597641459438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27,28 +43,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstaclesType: 0
-  leftLimit: -0.175
-  rightLimit: 0.4
-  speed: 0.1
+  PointOne: {x: 0, y: 0, z: 0}
+  speed: 0.2
+  timeInterval: 0
   force: 1
   forceYAxis: 2
   rotateSpeed: 0
---- !u!208 &-1663195377352166583
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4602032218424742042}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.075, y: 0.128, z: 0.075}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!1001 &3683058539738246603
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -124,7 +124,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 86007bc1e2f2dfa45bc2216b091ae362,
         type: 3}
       propertyPath: m_Name
-      value: HorizontalObstacle (1)
+      value: HorizontalObstacle Variant
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 86007bc1e2f2dfa45bc2216b091ae362,
         type: 3}

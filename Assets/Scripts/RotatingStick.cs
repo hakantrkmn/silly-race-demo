@@ -19,7 +19,12 @@ public class RotatingStick : Obstacle
     {
         if (collision.gameObject==gameObject)
         {
-            ForceObject(collision,gameObj);
+            gameObj.GetComponent<Animator>().SetBool("run", false);
+            gameObj.GetComponent<Animator>().SetBool("fall", true);
+            gameObj.GetComponent<Animator>().SetTrigger("fallTrigger");
+            gameObj.GetComponent<Animator>().SetBool("fallEnd", false);
+            GameManager.Instance.playerState = GameManager.playerStates.onAir;
+            ForceObject(collision, gameObj);
         }
     }
     //opponentin harekete geçirdiği actiona göre kontrol yapıyoruz. eğer çarptığı obstacle bu nesne ise gerekli işlemleri yapıyoruz

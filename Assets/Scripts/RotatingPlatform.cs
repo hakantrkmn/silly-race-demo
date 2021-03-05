@@ -11,16 +11,16 @@ public class RotatingPlatform : Obstacle
         Opponent.onCollisionEntered += OnCollisionEntered;
         PlayerController.onPlayerCollisionEntered += OnPlayerCollisionEntered;
     }
-
+    //player collidera girerse yapılacaklar
     private void OnPlayerCollisionEntered(GameObject gameObj, Collision collision)
     {
         if (collision.gameObject==gameObject)
         {
-
             gameObj.transform.parent.parent = collision.gameObject.transform;
         }
     }
 
+    //opponent collidera girerse yapılacaklar
     private void OnCollisionEntered(GameObject gameObj, Collision collision)
     {
         if (collision.gameObject==gameObject)
@@ -34,9 +34,4 @@ public class RotatingPlatform : Obstacle
     {
         moveObstacle();
     }
-    //private void OnCollisionStay(Collision collision)
-    //{
-    //    var direction = new Vector3(collision.contacts[0].normal.y, 1.5f, 0);
-    //    collision.gameObject.GetComponent<Rigidbody>().AddForce(direction * force, ForceMode.Impulse);
-    //}
 }

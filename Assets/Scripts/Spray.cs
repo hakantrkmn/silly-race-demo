@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class Spray : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     void Update()
     {
         if (GameManager.Instance.gameState==GameManager.gameStates.paint)
@@ -21,7 +15,7 @@ public class Spray : MonoBehaviour
             {
                 if (hitInfo.transform.gameObject==transform.parent.gameObject)
                 {
-                    transform.position = hitInfo.point;
+                    transform.position = Vector3.Lerp(transform.position,hitInfo.point,15*Time.deltaTime);
                 }
             }
         }

@@ -11,7 +11,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2457439952264339840, guid: fd87567ed3c5306408a7ef1f93396e98, type: 3}
 --- !u!208 &1757187683
@@ -24,12 +24,12 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.011000001, y: 0.011000001, z: 0.106000006}
+  m_Extents: {x: 0.025, y: 0.011000001, z: 0.37}
   m_MoveThreshold: 0.1
   m_Carve: 1
-  m_CarveOnlyStationary: 0
+  m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0.15100001}
-  m_TimeToStationary: 0.5
+  m_TimeToStationary: 0.001
 --- !u!114 &760516774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43,12 +43,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstaclesType: 0
-  leftLimit: 0
-  rightLimit: 0
+  PointOne: {x: 0, y: 0, z: 0}
   speed: 0
+  timeInterval: 0
   force: 0.8
   forceYAxis: 3
-  rotateSpeed: 0
+  rotateSpeed: 100
 --- !u!64 &450454578
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -92,9 +92,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstaclesType: 0
-  leftLimit: 0
-  rightLimit: 0
+  PointOne: {x: 0, y: 0, z: 0}
   speed: 0
+  timeInterval: 0
   force: 0
   forceYAxis: 0
   rotateSpeed: 0.3
@@ -164,7 +164,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5169d9b52d2553c4399804ed93fb9c8d, type: 2}
+      objectReference: {fileID: 2100000, guid: 467e70c65b1fd294cb95fdac709785fb, type: 2}
     - target: {fileID: 919132149155446097, guid: fd87567ed3c5306408a7ef1f93396e98,
         type: 3}
       propertyPath: m_Name

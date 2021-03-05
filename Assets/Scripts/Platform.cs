@@ -18,8 +18,7 @@ public class Platform : MonoBehaviour
         if (collision.gameObject==gameObject)
         {
             gameObj.transform.parent.parent = null;
-            GameManager.Instance.playerState = GameManager.playerStates.onGround;
-            gameObj.GetComponent<Animator>().SetBool("fall", false);
+
         }
     }
     //opponentin harekete geçirdiği actiona göre kontrol yapıyoruz. eğer çarptığı obstacle bu nesne ise gerekli işlemleri yapıyoruz
@@ -28,7 +27,6 @@ public class Platform : MonoBehaviour
         if (collision.gameObject==gameObject)
         {
             gameObj.transform.parent = null;
-            GameManager.Instance.playerState = GameManager.playerStates.onGround;
         }
     }
 

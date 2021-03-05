@@ -1,21 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!54 &890827857
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3919744661302128032}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 64
-  m_CollisionDetection: 0
 --- !u!136 &890827856
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -43,7 +27,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destination: {fileID: 0}
-  parent: {fileID: 0}
   EndDistance: 0
 --- !u!195 &890827853
 NavMeshAgent:
@@ -54,10 +37,10 @@ NavMeshAgent:
   m_GameObject: {fileID: 3919744661302128032}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.12
+  m_Radius: 0.11
   m_Speed: 0.8
   m_Acceleration: 8
-  avoidancePriority: 99
+  avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
@@ -67,6 +50,22 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
+--- !u!54 &890827857
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3919744661302128032}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!1001 &4225734148006383857
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -82,17 +81,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: ee8e35786d9ecea42a37243ee393cafc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.781
+      value: 0.164
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ee8e35786d9ecea42a37243ee393cafc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.45282546
+      value: 0.07699999
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ee8e35786d9ecea42a37243ee393cafc,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.96
+      value: -1.018
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ee8e35786d9ecea42a37243ee393cafc,
         type: 3}
@@ -207,7 +206,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ee8e35786d9ecea42a37243ee393cafc,
         type: 3}
       propertyPath: m_Name
-      value: Girl Variant (3)
+      value: Girl Variant (8)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ee8e35786d9ecea42a37243ee393cafc,
         type: 3}

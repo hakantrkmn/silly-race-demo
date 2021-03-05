@@ -9,6 +9,7 @@ public class HorizontalObstacle : Obstacle
 
     void Start()
     {
+        PointTwo = transform.position;
         obstaclesType = obstacles.Horizontal;
         Opponent.onCollisionEntered+= OnCollisionEntered;
         PlayerController.onPlayerCollisionEntered += OnPlayerCollisionEntered;
@@ -18,8 +19,10 @@ public class HorizontalObstacle : Obstacle
     {
         if (collision.gameObject==gameObject)
         {
-            gameObj.GetComponent<Animator>().SetBool("fall", true);
             gameObj.GetComponent<Animator>().SetBool("run", false);
+            gameObj.GetComponent<Animator>().SetBool("fallEnd", false);
+            gameObj.GetComponent<Animator>().SetBool("fall", true);
+            gameObj.GetComponent<Animator>().SetTrigger("fallTrigger");
             GameManager.Instance.playerState = GameManager.playerStates.onAir;
             ForceObject(collision,gameObj);
         }
