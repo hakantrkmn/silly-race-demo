@@ -1,3 +1,3 @@
 # silly-race-demo
 
-![game](https://imgur.com/EB0hOO7)
+![game](https://hizliresim.com/j5VEao)
