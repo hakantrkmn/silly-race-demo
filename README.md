@@ -1,3 +1,3 @@
 # silly-race-demo
 
-![github-small](https://hizliresim.com/j5VEao)
+[Imgur](https://i.imgur.com/EB0hOO7.png)
